@@ -18,6 +18,7 @@ public:
 	Date getDate();
 	int getNumber();
 	void setNumber(int number);
-	void addColumn(std::unique_ptr<Column> column);
+	void addColumn(std::unique_ptr<Column> &column);
+	bool remColumn(int query);
 };
 

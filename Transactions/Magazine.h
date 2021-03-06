@@ -12,6 +12,8 @@ private:
 public:
 	Magazine(int number, std::string name);
 	int getNumber();
-	void addStar(std::unique_ptr<Star> u);
+	void setNumber(int number);
+	void addStar(std::unique_ptr<Star> &u);
+	bool remStar(std::string name, std::string surName);//nnn
 };
 

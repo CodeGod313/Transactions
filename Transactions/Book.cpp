@@ -1,6 +1,6 @@
 #include "Book.h"
 
-Book::Book(std::string name, std::string author, int pages) : Product(name)
+Book::Book(std::string name, std::string author, int pages) : Product(name, BOOK)
 {
 	this->author = author;
 	this->pages = pages;
@@ -17,6 +17,7 @@ Book::Book(const Book & book)
 	}
 	this->name = book.name;
 	this->id = book.id;
+	this->type = BOOK;
 }
 
 void Book::addCoAuthor(std::string coAuthor)

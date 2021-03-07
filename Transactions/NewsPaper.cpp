@@ -1,6 +1,6 @@
 #include "NewsPaper.h"
 
-NewsPaper::NewsPaper(Date date, int number, std::string name) : Product(name)
+NewsPaper::NewsPaper(Date date, int number, std::string name) : Product(name, MAGAZINE)
 {
 	this->date = date;
 	this->number = number;
@@ -17,6 +17,7 @@ NewsPaper::NewsPaper(const NewsPaper & other)
 	}
 	this->id = other.id;
 	this->name = other.name;
+	this->type = NEWSPAPER;
 }
 
 Date NewsPaper::getDate()

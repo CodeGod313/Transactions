@@ -6,14 +6,21 @@ class Product
 private:
 	static int idSeed;
 protected:
+	enum ProductType
+	{
+		BOOK,
+		NEWSPAPER,
+		MAGAZINE
+	}type;
 	int id;
 	std::string name;
 public:
 	Product();
-	Product(std::string name);
+	Product(std::string name, ProductType type);
 	std::string  getName();
 	void setName(std::string name);
 	int getId();
+	int getType();
 	virtual void modify(std::shared_ptr<Product> obj, std::string args);
 };
 

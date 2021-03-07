@@ -1,6 +1,6 @@
 #include "Magazine.h"
 
-Magazine::Magazine(int number, std::string name) : Product(name)
+Magazine::Magazine(int number, std::string name) : Product(name, MAGAZINE)
 {
 	this->number = number;
 }
@@ -14,6 +14,7 @@ Magazine::Magazine(const Magazine & other)
 	{
 		this->stars[i] = other.stars[i];
 	}
+	this->type = MAGAZINE;
 }
 
 int Magazine::getNumber()

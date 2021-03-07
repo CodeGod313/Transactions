@@ -6,6 +6,19 @@ Book::Book(std::string name, std::string author, int pages) : Product(name)
 	this->pages = pages;
 }
 
+Book::Book(const Book & book)
+{
+	this->author = book.author;
+	this->pages = book.pages;
+	this->coAuthors.resize(book.coAuthors.size());
+	for (int i = 0; i < coAuthors.size(); i++)
+	{
+		this->coAuthors[i] = book.coAuthors[i];
+	}
+	this->name = book.name;
+	this->id = book.id;
+}
+
 void Book::addCoAuthor(std::string coAuthor)
 {
 	coAuthors.push_back(coAuthor);

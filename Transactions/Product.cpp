@@ -2,6 +2,11 @@
 
 int Product::idSeed = 0;
 
+Product::Product()
+{
+
+}
+
 Product::Product(std::string name)
 {
 	this->name = name;
@@ -11,6 +16,11 @@ Product::Product(std::string name)
 std::string Product::getName()
 {
 	return name;
+}
+
+void Product::setName(std::string name)
+{
+	this->name = name;
 }
 
 int Product::getId()

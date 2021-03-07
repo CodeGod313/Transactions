@@ -8,12 +8,13 @@ class Magazine : public Product
 {
 private:
 	int number;
-	std::vector<std::unique_ptr<Star>> stars;
+	std::vector<std::shared_ptr<Star>> stars;
 public:
 	Magazine(int number, std::string name);
+	Magazine(const Magazine &other);
 	int getNumber();
 	void setNumber(int number);
-	void addStar(std::unique_ptr<Star> &u);
+	void addStar(std::shared_ptr<Star> &u);
 	bool remStar(std::string name, std::string surName);//nnn
 };
 

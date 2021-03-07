@@ -6,6 +6,19 @@ NewsPaper::NewsPaper(Date date, int number, std::string name) : Product(name)
 	this->number = number;
 }
 
+NewsPaper::NewsPaper(const NewsPaper & other)
+{
+	this->date = other.date;
+	this->number = other.number;
+	this->Columns.resize(other.Columns.size());
+	for (int i = 0; i < other.Columns.size(); i++)
+	{
+		this->Columns[i] = other.Columns[i];
+	}
+	this->id = other.id;
+	this->name = other.name;
+}
+
 Date NewsPaper::getDate()
 {
 	return date;
@@ -21,10 +34,10 @@ void NewsPaper::setNumber(int number)
 	this->number = number;
 }
 
-void NewsPaper::addColumn(std::unique_ptr<Column> &column)
+void NewsPaper::addColumn(std::shared_ptr<Column> &column)
 {
 	Columns.resize(Columns.size() + 1);
-	Columns[Columns.size() - 1] = std::move(column);
+	Columns[Columns.size() - 1].swap(column);
 }
 
 bool NewsPaper::remColumn(int query)

@@ -13,6 +13,7 @@ private:
 	int pages;
 public:
 	Book(std::string name, std::string author, int pages);
+	Book(const Book &book);
 	void addCoAuthor(std::string coAuthor);
 	bool remCoAuthor(std::string coAuthor);
 	void setPages(int pages);

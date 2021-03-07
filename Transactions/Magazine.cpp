@@ -5,6 +5,17 @@ Magazine::Magazine(int number, std::string name) : Product(name)
 	this->number = number;
 }
 
+Magazine::Magazine(const Magazine & other)
+{
+	this->number = other.number;
+	this->id = other.id;
+	this->stars.resize(other.stars.size());
+	for (int i = 0; i < other.stars.size(); i++)
+	{
+		this->stars[i] = other.stars[i];
+	}
+}
+
 int Magazine::getNumber()
 {
 	return number;
@@ -15,10 +26,10 @@ void Magazine::setNumber(int number)
 	this->number = number;
 }
 
-void Magazine::addStar(std::unique_ptr<Star> &u)
+void Magazine::addStar(std::shared_ptr<Star> &u)
 {
 	stars.resize(stars.size() + 1);
-	stars[stars.size() - 1] = std::move(u);
+	stars[stars.size() - 1].swap(u);
 }
 
 bool Magazine::remStar(std::string name, std::string surName)

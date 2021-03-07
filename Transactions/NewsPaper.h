@@ -12,13 +12,14 @@ class NewsPaper : public Product
 private:
 	Date date;
 	int number;
-	std::vector<std::unique_ptr<Column>> Columns;
+	std::vector<std::shared_ptr<Column>> Columns;
 public:
 	NewsPaper(Date date, int number, std::string name);
+	NewsPaper(const NewsPaper &other);
 	Date getDate();
 	int getNumber();
 	void setNumber(int number);
-	void addColumn(std::unique_ptr<Column> &column);
+	void addColumn(std::shared_ptr<Column> &column);
 	bool remColumn(int query);
 };
 

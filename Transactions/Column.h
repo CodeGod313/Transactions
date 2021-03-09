@@ -4,12 +4,12 @@ class Column
 {
 private:
 	std::string text;
-	int query;
+	int priority;
 public:
-	Column(std::string text, int query);
+	Column(std::string text, int priority);
 	std::string getText();
-	int getQuery();
-	void setQuery(int query);
+	int getPriority();
+	void setPriority(int priority);
 	void app(std::string str);
 	void setNewText(std::string text);
 };

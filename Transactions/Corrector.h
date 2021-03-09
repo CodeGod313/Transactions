@@ -9,6 +9,5 @@ private:
 public:
 	Corrector(std::string name, std::string surName, std::string middleName);
 	int getCorrectedProducts();
-	void correctProduct();
 };
 

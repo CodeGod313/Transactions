@@ -14,7 +14,7 @@ public:
 	Magazine(const Magazine &other);
 	int getNumber();
 	void setNumber(int number);
-	void addStar(std::shared_ptr<Star> &u);
-	bool remStar(std::string name, std::string surName);//nnn
+	void addStar(std::shared_ptr<Star> u);
+	bool remStar(std::string name, std::string surName);
 };
 

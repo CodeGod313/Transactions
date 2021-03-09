@@ -1,9 +1,9 @@
 #include "Column.h"
 
-Column::Column(std::string text, int query)
+Column::Column(std::string text, int priority)
 {
 	this->text = text;
-	this->query = query;
+	this->priority = priority;
 }
 
 std::string Column::getText()
@@ -11,14 +11,14 @@ std::string Column::getText()
 	return text;
 }
 
-int Column::getQuery()
+int Column::getPriority()
 {
-	return query;
+	return priority;
 }
 
-void Column::setQuery(int query)
+void Column::setPriority(int priority)
 {
-	this->query = query;
+	this->priority = priority;
 }
 
 void Column::app(std::string str)

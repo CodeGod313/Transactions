@@ -27,7 +27,7 @@ void Magazine::setNumber(int number)
 	this->number = number;
 }
 
-void Magazine::addStar(std::shared_ptr<Star> &u)
+void Magazine::addStar(std::shared_ptr<Star> u)
 {
 	stars.resize(stars.size() + 1);
 	stars[stars.size() - 1].swap(u);

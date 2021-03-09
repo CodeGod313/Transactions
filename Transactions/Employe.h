@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <memory>
+#include "Product.h"
 
 class Employe
 {
@@ -13,7 +14,7 @@ protected:
 		CORR,
 		LEAD
 	}role;
-	//std::shared_ptr<> currentProduct;
+	std::shared_ptr<Product> currentProduct;
 public:
 	Employe(std::string name, std::string surname, std::string middleName, Role role) 
 	{
@@ -25,6 +26,6 @@ public:
 	std::string getSurname();
 	std::string getMiddleName();
 	int getRole();
-	virtual void showInfo() = 0;
+	virtual void showInfo();
 };
 

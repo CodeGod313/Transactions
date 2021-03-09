@@ -10,7 +10,7 @@ private:
 public:
 	ChiefEditor(std::string name, std::string surName, std::string middleName);
 	void commitTransaction();
-	void makeModification();
+	void publish();
 	int getCommitedTransactions();
 	int getPublishedProducts();
 };

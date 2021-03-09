@@ -18,8 +18,9 @@ public:
 	NewsPaper(const NewsPaper &other);
 	Date getDate();
 	int getNumber();
+	void setDate(Date date);
 	void setNumber(int number);
-	void addColumn(std::shared_ptr<Column> &column);
-	bool remColumn(int query);
+	void addColumn(std::shared_ptr<Column> column);
+	bool remColumn(int priority);
 };
 

@@ -19,3 +19,8 @@ int Employe::getRole()
 {
 	return role;
 }
+
+void Employe::showInfo()
+{
+	printf("kaka");
+}

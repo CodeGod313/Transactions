@@ -30,21 +30,26 @@ int NewsPaper::getNumber()
 	return number;
 }
 
+void NewsPaper::setDate(Date date)
+{
+	this->date = date;
+}
+
 void NewsPaper::setNumber(int number)
 {
 	this->number = number;
 }
 
-void NewsPaper::addColumn(std::shared_ptr<Column> &column)
+void NewsPaper::addColumn(std::shared_ptr<Column> column)
 {
 	Columns.resize(Columns.size() + 1);
 	Columns[Columns.size() - 1].swap(column);
 }
 
-bool NewsPaper::remColumn(int query)
+bool NewsPaper::remColumn(int priority)
 {
 	for (int i = 0; i < Columns.size(); i++) {
-		if (Columns[i]->getQuery() == query) {
+		if (Columns[i]->getPriority() == priority) {
 			Columns.erase(Columns.begin() + i, Columns.begin() + i + 1);
 			return true;
 		}

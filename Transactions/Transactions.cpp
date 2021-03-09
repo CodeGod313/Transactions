@@ -7,6 +7,7 @@
 #include "Employe.h"
 #include "ChiefEditor.h"
 #include "Product.h"
+#include "Transaction.h"
 
 using namespace std;
 
@@ -14,6 +15,7 @@ int main()
 {
 	vector<shared_ptr<Employe>> employes;
 	vector<shared_ptr<Product>> products;
+	vector<shared_ptr<Transaction<Product>>> transactions;
 	string name, surName, middleName;
 	cout << "Enter chief's name, surname and middlename" << endl;
 	cin >> name >> surName >> middleName;

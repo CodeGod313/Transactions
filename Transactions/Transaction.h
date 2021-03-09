@@ -17,6 +17,8 @@ public:
 	void commit();
 	void revoke();
 	void inf();
+	std::shared_ptr<T> getPrev();
+	bool isUsed(std::shared_ptr<Product> prod);
 };
 
 template<class T>
@@ -35,9 +37,20 @@ inline void Transaction<T>::begin(std::shared_ptr<T> modification)
 template<class T>
 inline void Transaction<T>::commit()
 {
-	//prev->modify(current);
-	current.swap(prev);
-	prev.reset();
+	switch (prev->getType())
+	{
+	case 0: // Book
+		((Book *)prev.get())->modify(current);
+		break;
+	case 1: // newspaper
+		((NewsPaper *)prev.get())->modify(current);
+		break;
+	case 2: // magazine
+		((Magazine *)prev.get())->modify(current);
+		break;
+	default:
+		break;
+	}
 }
 
 template<class T>
@@ -73,4 +86,19 @@ inline void Transaction<T>::inf()
 	default:
 		break;
 	}
+}
+
+template<class T>
+inline std::shared_ptr<T> Transaction<T>::getPrev()
+{
+	return prev;
+}
+
+template<class T>
+inline bool Transaction<T>::isUsed(std::shared_ptr<Product> prod)
+{
+	if (prev.get() == prod.get()) {
+		return true;
+	}
+	else return false;
 }

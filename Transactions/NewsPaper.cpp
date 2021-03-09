@@ -46,6 +46,11 @@ void NewsPaper::addColumn(std::shared_ptr<Column> column)
 	Columns[Columns.size() - 1].swap(column);
 }
 
+std::vector<std::shared_ptr<Column>> NewsPaper::getColumns()
+{
+	return Columns;
+}
+
 bool NewsPaper::remColumn(int priority)
 {
 	for (int i = 0; i < Columns.size(); i++) {
@@ -62,4 +67,19 @@ void NewsPaper::inf()
 	std::cout << "Title: " << name << std::endl << "Number: " << number << std::endl << "Date: ";
 	date.inf();
 	std::cout << std::endl;
+}
+
+void NewsPaper::modify(const std::shared_ptr<Product>& newsPaper1)
+{
+	std::shared_ptr<NewsPaper> other((NewsPaper *)(newsPaper1.get()));
+	this->date = other->getDate();
+	this->number = other->getNumber();
+	this->Columns.resize(other->getColumns().size());
+	for (int i = 0; i < other->getColumns().size(); i++)
+	{
+		this->Columns[i] = other->getColumns()[i];
+	}
+	this->id = other->getId();
+	this->name = other->getId();
+	this->type = NEWSPAPER;
 }

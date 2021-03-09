@@ -8,6 +8,11 @@ ChiefEditor::ChiefEditor(std::string name, std::string surName, std::string midd
 
 void ChiefEditor::commitTransaction(std::vector<Transaction<Product>>& transactions)
 {
+	if (transactions.size() == 0)
+	{
+		std::cout << "No transactions" << std::endl;
+		return;
+	}
 	for (int i = 0; i < transactions.size(); i++)
 	{
 		std::cout << "Transaction #" << i + 1 << std::endl;
@@ -15,10 +20,17 @@ void ChiefEditor::commitTransaction(std::vector<Transaction<Product>>& transacti
 	}
 	std::cout << "Select:" << std::endl;
 	int choice1;
+	do
+	{
+		std::cin >> choice1;
+	} while (choice1 < 1 || choice1 > transactions.size());
 	std::cin >> choice1;
 	std::cout << "1 - Commit\n 2 - Revoke\n";
 	int choice2;
-	std::cin >> choice2;
+	do
+	{
+		std::cin >> choice2;
+	} while (choice2 != 1 || choice2 != 2);
 	switch (choice2)
 	{
 	case 1:
@@ -89,6 +101,12 @@ void ChiefEditor::createProduct(std::vector<std::shared_ptr<Product>>& products)
 		std::getline(std::cin, author);
 		std::cout << "Enter the quantity of pages" << std::endl;
 		std::cin >> pages;
+		while (pages<0)
+		{
+			rewind(stdin);
+			std::cout << "Wrong value" << std::endl;
+			std::cin >> pages;
+		}
 		std::shared_ptr<Book> book(new Book(name, author, pages));
 		products.resize(products.size() + 1);
 		products[products.size() - 1] = book;
@@ -100,10 +118,22 @@ void ChiefEditor::createProduct(std::vector<std::shared_ptr<Product>>& products)
 		std::cout << "Enter date" << std::endl;
 		int year, month, day;
 		std::cin >> day >> month >> year;
+		while (day < 0 || day > 31 || month < 1 || month > 12 || year < 0 || year > 2020)
+		{
+			std::cout << "Wrong data" << std::endl;
+			rewind(stdin);
+			std::cin >> day >> month >> year;
+		}
 		Date date(day, month, year);
 		std::cout << "Enter the number" << std::endl;
 		int number;
 		std::cin >> number;
+		while (number < 0)
+		{
+			std::cout << "Enter dood number" << std::endl;
+			rewind(stdin);
+			std::cin >> number;
+		}
 		std::string name;
 		std::cout << "Enter the title" << std::endl;
 		rewind(stdin);
@@ -123,6 +153,12 @@ void ChiefEditor::createProduct(std::vector<std::shared_ptr<Product>>& products)
 		std::getline(std::cin, name);
 		std::cout << "Enter the number" << std::endl;
 		std::cin >> number;
+		while (number < 0)
+		{
+			std::cout << "Enter dood number" << std::endl;
+			rewind(stdin);
+			std::cin >> number;
+		}
 		std::shared_ptr<Magazine> magazine(new Magazine(number, name));
 		products.resize(products.size() + 1);
 		products[products.size() - 1] = magazine;

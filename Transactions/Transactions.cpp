@@ -19,6 +19,7 @@ void menu()
 	cout << "3 - Exit" << endl;
 }
 
+
 void chiefMenu()
 {
 	cout << "1 - Create project" << endl;
@@ -28,6 +29,7 @@ void chiefMenu()
 	cout <<	"5 - Back" << endl;
 }
 
+
 void employeMenu()
 {
 	cout << "1 - Select project" << endl;
@@ -35,6 +37,7 @@ void employeMenu()
 	cout << "3 - Create modification" << endl;
 	cout << "4 - Back" << endl;
 }
+
 
 int main()
 {
@@ -45,6 +48,7 @@ int main()
 	cout << "Enter chief's name, surname and middlename" << endl;
 	cin >> name >> surName >> middleName;
 	shared_ptr<ChiefEditor> chief(new ChiefEditor(name, surName, middleName));
+	system("CLS");
 	int choice;
 	do
 	{
@@ -56,27 +60,37 @@ int main()
 		{
 			do
 			{
+				system("CLS");
 				chiefMenu();
+				rewind(stdin);
+				rewind(stdin);
+				rewind(stdout);
+				fflush(stdin);
 				cin >> choice;
 				switch (choice)
 				{
 				case 1:
 					chief->createProduct(products);
+					system("pause");
 					break;
 				case 2:
 					chief->employ(employes);
+					system("pause");
 					break;
 				case 3:
 					chief->commitTransaction(transactions);
+					system("pause");
 					break;
 				case 4:
 					chief->publish();
+					system("pause");
 					break;
 				case 5:
 					system("CLS");
 					break;
 				default:
 					cout << "Wrong choice" << endl;
+					system("pause");
 					break;
 				}
 			} while (choice != 5);
@@ -84,41 +98,65 @@ int main()
 			break;
 		case 2:
 		{
-			for (int i = 0; i < employes.size(); i++)
-			{
-				cout << "Employe #" << i + 1 << endl;
-				employes[i]->showInfo();
-			}
-			int emp;
-			cout << "Select:" << endl;
-			cin >> emp;
-			employeMenu();
 			int c;
-			cin >> c;
-			switch (c)
+			do
 			{
-			case 1:
-				employes[emp - 1]->selectProject(products);
-				break;
-			case 2:
-				employes[emp - 1]->quitProject();
-				break;
-			case 3:
-			{
-				Transaction<Product> transaction(employes[emp-1]->getCurrenProduct());
-				CreatorMod modificator(employes[emp - 1]->getCurrenProduct(), employes[emp - 1]->getRole());
-				std::shared_ptr<Product> modification(modificator.start());
-				transaction.begin(modification);
-				transactions.push_back(transaction);
-			}
-				break;
-			case 4:
 				system("CLS");
+				if (employes.size() == 0)
+				{
+					cout << "No employes" << endl;
+					system("pause");
+					break;
+				}
+				for (int i = 0; i < employes.size(); i++)
+				{
+					cout << "Employe #" << i + 1 << endl;
+					employes[i]->showInfo();
+				}
+				int emp;
+				cout << "Select:" << endl;
+				cin >> emp;
+				if (emp<1 || emp >employes.size()) {
+					cout << "Employe not found" << endl;
+					continue;
+				}
+				employeMenu();
+				cin >> c;
+				switch (c)
+				{
+				case 1:
+					employes[emp - 1]->selectProject(products);
+					break;
+				case 2:
+					employes[emp - 1]->quitProject();
+					break;
+				case 3:
+				{
+					for (int i = 0; i < transactions.size(); i++)
+					{
+						if (transactions[i].isUsed(employes[emp - 1]->getCurrenProduct()))
+						{
+							cout << "Acces denied" << endl;
+							system("pause");
+							break;
+						}
+					}
+					Transaction<Product> transaction(employes[emp - 1]->getCurrenProduct());
+					CreatorMod modificator(employes[emp - 1]->getCurrenProduct(), employes[emp - 1]->getRole());
+					std::shared_ptr<Product> modification(modificator.start());
+					transaction.begin(modification);
+					transactions.push_back(transaction);
+				}
 				break;
-			default:
-				break;
-			}
-
+				case 4:
+					system("CLS");
+					break;
+				default:
+					cout << "Wrong choice" << endl;
+					system("pause");
+					break;
+				}
+			} while (c != 4);
 		}
 			break;
 		case 3:

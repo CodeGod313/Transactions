@@ -47,6 +47,12 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 				int quantity;
 				std::cout << "Enter quantity of pages" << std::endl;
 				std::cin >> quantity;
+				while (quantity < 1)
+				{
+					std::cout << "Enter dood quantity" << std::endl;
+					rewind(stdin);
+					std::cin >> quantity;
+				}
 				book->setPages(quantity);
 				std::cout << "Seted" << std::endl;
 				system("pause");
@@ -87,6 +93,12 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 				int number;
 				std::cout << "Enter number" << std::endl;
 				std::cin >> number;
+				while (number < 0)
+				{
+					std::cout << "Enter dood number" << std::endl;
+					rewind(stdin);
+					std::cin >> number;
+				}
 				newsPaper->setNumber(number);
 				std::cout << "Added" << std::endl;
 				system("pause");
@@ -101,6 +113,12 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 				int priority;
 				std::cout << "Enter the priority" << std::endl;
 				std::cin >> priority;
+				while (priority < 0)
+				{
+					std::cout << "Enter dood number" << std::endl;
+					rewind(stdin);
+					std::cin >> priority;
+				}
 				std::shared_ptr<Column> c(new Column(text, priority));
 				newsPaper->addColumn(c);
 				std::cout << "Added" << std::endl;
@@ -109,9 +127,15 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 			break;
 			case 3:
 			{
-				int day, month, year;
 				std::cout << "Enter day, month and year" << std::endl;
+				int year, month, day;
 				std::cin >> day >> month >> year;
+				while (day < 0 || day > 31 || month < 1 || month > 12 || year < 0 || year > 2020)
+				{
+					std::cout << "Wrong data" << std::endl;
+					rewind(stdin);
+					std::cin >> day >> month >> year;
+				}
 				Date date(day, month, year);
 				newsPaper->setDate(date);
 				system("pause");
@@ -153,6 +177,12 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 				int number;
 				std::cout << "Enter number" << std::endl;
 				std::cin >> number;
+				while (number < 0)
+				{
+					std::cout << "Enter dood number" << std::endl;
+					rewind(stdin);
+					std::cin >> number;
+				}
 				magazine->setNumber(number);
 				std::cout << "Added" << std::endl;
 				system("pause");
@@ -166,6 +196,12 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 				std::cin >> name >> surName >> middleName;
 				std::cout << "Enter domain:\n 1 - Music\n 2 - Cinema\n 3 - Art\n 4 - Fashion" << std::endl;
 				std::cin >> domain;
+				while (domain<1 || domain > 4)
+				{
+					std::cout << "Wrong" << std::endl;
+					rewind(stdin);
+					std::cin >> domain;
+				}
 				std::shared_ptr<Star> star(new Star(name, surName, middleName, domain));
 				magazine->addStar(star);
 				std::cout << "Added" << std::endl;
@@ -227,6 +263,12 @@ std::shared_ptr<Product> CreatorMod::createAsCorr(std::shared_ptr<Product> prod)
 				int quantity;
 				std::cout << "Enter quantity of pages" << std::endl;
 				std::cin >> quantity;
+				while (quantity < 0)
+				{
+					std::cout << "Enter dood number" << std::endl;
+					rewind(stdin);
+					std::cin >> quantity;
+				}
 				book->setPages(quantity);
 				std::cout << "Seted" << std::endl;
 				system("pause");
@@ -330,6 +372,12 @@ std::shared_ptr<Product> CreatorMod::createAsCorr(std::shared_ptr<Product> prod)
 				int number;
 				std::cout << "Enter number" << std::endl;
 				std::cin >> number;
+				while (number < 0)
+				{
+					std::cout << "Enter dood number" << std::endl;
+					rewind(stdin);
+					std::cin >> number;
+				}
 				magazine->setNumber(number);
 				std::cout << "Added" << std::endl;
 				system("pause");
@@ -395,6 +443,5 @@ std::shared_ptr<Product> CreatorMod::start()
 	default:
 		break;
 	}
-
-	return NULL;
+	return ans;
 }

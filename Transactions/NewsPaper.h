@@ -21,7 +21,9 @@ public:
 	void setDate(Date date);
 	void setNumber(int number);
 	void addColumn(std::shared_ptr<Column> column);
+	std::vector<std::shared_ptr<Column>> getColumns();
 	bool remColumn(int priority);
 	void inf() override;
+	void modify(const std::shared_ptr<Product> &newsPaper1);
 };
 

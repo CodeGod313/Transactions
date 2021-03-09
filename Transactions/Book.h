@@ -20,5 +20,8 @@ public:
 	void setNewAuthor(std::string author);
 	std::string getAuthor();
 	int getPages();
+	int getAuthorQ();
+	std::vector<std::string> getCoauthors();
 	void inf() override;
+	void modify(const std::shared_ptr<Product> &book);
 };

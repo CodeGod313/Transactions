@@ -58,6 +58,16 @@ int Book::getPages()
 	return pages;
 }
 
+int Book::getAuthorQ()
+{
+	return coAuthors.size();
+}
+
+std::vector<std::string> Book::getCoauthors()
+{
+	return coAuthors;
+}
+
 void Book::inf()
 {
 	std::cout << "Title: " << name << std::endl;
@@ -67,4 +77,19 @@ void Book::inf()
 	{
 		std::cout << coAuthors[i] << std::endl;
 	}
+}
+
+void Book::modify(const std::shared_ptr<Product> &book)
+{
+	std::shared_ptr<Book> book1((Book *)book.get());
+	this->author = book1->getAuthor();
+	this->pages = book1->getPages();
+	this->coAuthors.resize(book1->getAuthorQ());
+	for (int i = 0; i < coAuthors.size(); i++)
+	{
+		this->coAuthors[i] = book1->getCoauthors()[i];
+	}
+	this->name = book1->getName();
+	this->id = book1->getId();
+	this->type = BOOK;
 }

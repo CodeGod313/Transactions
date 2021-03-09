@@ -57,3 +57,14 @@ int Book::getPages()
 {
 	return pages;
 }
+
+void Book::inf()
+{
+	std::cout << "Title: " << name << std::endl;
+	std::cout << "Author: " << author << std::endl;
+	std::cout << "Co-authors" << std::endl;
+	for (int i = 0; i < coAuthors.size(); i++)
+	{
+		std::cout << coAuthors[i] << std::endl;
+	}
+}

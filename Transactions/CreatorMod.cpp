@@ -13,10 +13,10 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 	case 0: // BOOK
 	{
 		std::shared_ptr<Book> book(new Book(*((Book *)prod.get())));
-		std::cout << "1. Add co-author\n 2. Set new author\n 3. Set quantity of pages\n 4. Start transaction\n 5. Cancel" << std::endl;
 		int choice;
 		do
 		{
+			std::cout << "1. Add co-author\n 2. Set new author\n 3. Set quantity of pages\n 4. Start transaction\n 5. Cancel" << std::endl;
 			std::cin >> choice;
 			switch (choice)
 			{
@@ -24,6 +24,7 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 			{
 				std::string coAuthor;
 				std::cout << "Enter co-autor's name" << std::endl;
+				rewind(stdin);
 				std::getline(std::cin, coAuthor);
 				book->addCoAuthor(coAuthor);
 				std::cout << "Added" << std::endl;
@@ -34,6 +35,7 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 			{
 				std::string author;
 				std::cout << "Enter autor's name" << std::endl;
+				rewind(stdin);
 				std::getline(std::cin, author);
 				book->setNewAuthor(author);
 				std::cout << "Added" << std::endl;
@@ -72,10 +74,11 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 	case 1:// NEWSPAPER
 	{
 		std::shared_ptr<NewsPaper> newsPaper(new NewsPaper(*((NewsPaper *)prod.get())));
-		std::cout << "1. Add a number\n 2. Add a column\n 3. Set new date\n 4. Start transaction\n 5. Cancel" << std::endl;
+		
 		int choice;
 		do
 		{
+			std::cout << "1. Add a number\n 2. Add a column\n 3. Set new date\n 4. Start transaction\n 5. Cancel" << std::endl;
 			std::cin >> choice;
 			switch (choice)
 			{
@@ -93,6 +96,7 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 			{
 				std::string text;
 				std::cout << "Enter the text of column" << std::endl;
+				rewind(stdin);
 				std::getline(std::cin, text);
 				int priority;
 				std::cout << "Enter the priority" << std::endl;
@@ -136,10 +140,11 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 	case 2: // MAGAZINE
 	{
 		std::shared_ptr<Magazine> magazine(new Magazine(*((Magazine *)prod.get())));
-		std::cout << "1. Add a number\n 2. Add a star\n 3. Start transaction\n 4. Cancel" << std::endl;
+		
 		int choice;
 		do
 		{
+			std::cout << "1. Add a number\n 2. Add a star\n 3. Start transaction\n 4. Cancel" << std::endl;
 			std::cin >> choice;
 			switch (choice)
 			{
@@ -198,10 +203,11 @@ std::shared_ptr<Product> CreatorMod::createAsCorr(std::shared_ptr<Product> prod)
 	case 0: // BOOK
 	{
 		std::shared_ptr<Book> book(new Book(*((Book *)prod.get())));
-		std::cout << "1. Remove coauthor\n 2. Correct the quantity of pages\n  3. Start transaction\n 5. Cancel" << std::endl;
+		
 		int choice;
 		do
 		{
+			std::cout << "1. Remove coauthor\n 2. Correct the quantity of pages\n  3. Start transaction\n 5. Cancel" << std::endl;
 			std::cin >> choice;
 			switch (choice)
 			{
@@ -209,6 +215,7 @@ std::shared_ptr<Product> CreatorMod::createAsCorr(std::shared_ptr<Product> prod)
 			{
 				std::string coAuthor;
 				std::cout << "Enter co-autor's name" << std::endl;
+				rewind(stdin);
 				std::getline(std::cin, coAuthor);
 				book->remCoAuthor(coAuthor);
 				std::cout << "Added" << std::endl;
@@ -247,10 +254,11 @@ std::shared_ptr<Product> CreatorMod::createAsCorr(std::shared_ptr<Product> prod)
 	case 1:// NEWSPAPER
 	{
 		std::shared_ptr<NewsPaper> newsPaper(new NewsPaper(*((NewsPaper *)prod.get())));
-		std::cout << "1. Correct number\n 2. Remove column\n 3. Correct date\n 4. Start transaction\n 5. Cancel" << std::endl;
+		
 		int choice;
 		do
 		{
+			std::cout << "1. Correct number\n 2. Remove column\n 3. Correct date\n 4. Start transaction\n 5. Cancel" << std::endl;
 			std::cin >> choice;
 			switch (choice)
 			{
@@ -309,10 +317,11 @@ std::shared_ptr<Product> CreatorMod::createAsCorr(std::shared_ptr<Product> prod)
 	case 2: // MAGAZINE
 	{
 		std::shared_ptr<Magazine> magazine(new Magazine(*((Magazine *)prod.get())));
-		std::cout << "1. Correct number\n 2. Remove star\n 3. Start transaction\n 4. Cancel" << std::endl;
+		
 		int choice;
 		do
 		{
+			std::cout << "1. Correct number\n 2. Remove star\n 3. Start transaction\n 4. Cancel" << std::endl;
 			std::cin >> choice;
 			switch (choice)
 			{

@@ -43,3 +43,13 @@ bool Magazine::remStar(std::string name, std::string surName)
 	}
 	return false;
 }
+
+void Magazine::inf()
+{
+	std::cout << "Title: " << name << std::endl;
+	for (int i = 0; i < stars.size(); i++)
+	{
+		std::cout << "Star #" << i + 1 << std::endl;
+		stars[i]->inf();
+	}
+}

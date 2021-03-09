@@ -37,3 +37,26 @@ std::string Star::getMiddleName()
 {
 	return middleName;
 }
+
+void Star::inf()
+{
+	std::cout << name << " " << surName << " " << middleName << std::endl;
+	std::cout << "Domain: ";
+	switch (domain)
+	{
+	case Star::MUSIC:
+		std::cout << "Music" << std::endl;
+		break;
+	case Star::CINEMA:
+		std::cout << "Cinema" << std::endl;
+		break;
+	case Star::ART:
+		std::cout << "Art" << std::endl;
+		break;
+	case Star::FASHION:
+		std::cout << "Fashion" << std::endl;
+		break;
+	default:
+		break;
+	}
+}

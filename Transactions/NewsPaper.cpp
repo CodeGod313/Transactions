@@ -56,3 +56,10 @@ bool NewsPaper::remColumn(int priority)
 	}
 	return false;
 }
+
+void NewsPaper::inf()
+{
+	std::cout << "Title: " << name << std::endl << "Number: " << number << std::endl << "Date: ";
+	date.inf();
+	std::cout << std::endl;
+}

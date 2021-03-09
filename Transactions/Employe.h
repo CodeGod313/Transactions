@@ -2,6 +2,11 @@
 #include <string>
 #include <memory>
 #include "Product.h"
+#include <iostream>
+#include <vector>
+#include "Book.h"
+#include "Magazine.h"
+#include "NewsPaper.h"
 
 class Employe
 {
@@ -21,11 +26,15 @@ public:
 		this->middleName = middleName;
 		this->name = name;
 		this->surName = surname;
+		this->role = role;
 	}
+	void selectProject(std::vector<std::shared_ptr<Product>> &products);
 	std::string getName();
 	std::string getSurname();
 	std::string getMiddleName();
+	std::shared_ptr<Product> getCurrenProduct();
 	int getRole();
-	virtual void showInfo();
+	void showInfo();
+	void quitProject();
 };
 

@@ -20,4 +20,5 @@ public:
 	void setNewAuthor(std::string author);
 	std::string getAuthor();
 	int getPages();
+	void inf() override;
 };

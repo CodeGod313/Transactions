@@ -34,7 +34,7 @@ int Product::getType()
 	return type;
 }
 
-void Product::modify(std::shared_ptr<Product> obj, std::string args)
+void Product::inf()
 {
-	return;
+
 }

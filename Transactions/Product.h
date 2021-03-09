@@ -21,6 +21,6 @@ public:
 	void setName(std::string name);
 	int getId();
 	int getType();
-	virtual void modify(std::shared_ptr<Product> obj, std::string args);
+	virtual void inf();
 };
 

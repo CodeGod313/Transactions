@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 class Column
 {
 private:
@@ -12,5 +13,6 @@ public:
 	void setPriority(int priority);
 	void app(std::string str);
 	void setNewText(std::string text);
+	void inf();
 };
 

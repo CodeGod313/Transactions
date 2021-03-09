@@ -30,3 +30,8 @@ void Column::setNewText(std::string text)
 {
 	this->text = text;
 }
+
+void Column::inf()
+{
+	std::cout << "Text: " << text << std::endl << "Priority: " << priority << std::endl;
+}

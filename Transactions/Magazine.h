@@ -3,6 +3,7 @@
 #include "Star.h"
 #include <memory>
 #include "Product.h"
+#include <iostream>
 
 class Magazine : public Product
 {
@@ -16,5 +17,6 @@ public:
 	void setNumber(int number);
 	void addStar(std::shared_ptr<Star> u);
 	bool remStar(std::string name, std::string surName);
+	void inf() override;
 };
 

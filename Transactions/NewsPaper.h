@@ -22,5 +22,6 @@ public:
 	void setNumber(int number);
 	void addColumn(std::shared_ptr<Column> column);
 	bool remColumn(int priority);
+	void inf() override;
 };
 

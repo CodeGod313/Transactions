@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 class Star
 {
 private:
@@ -18,5 +19,6 @@ public:
 	std::string getName();
 	std::string getSurName();
 	std::string getMiddleName();
+	void inf();
 };
 

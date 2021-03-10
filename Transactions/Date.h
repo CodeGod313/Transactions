@@ -13,5 +13,8 @@ public:
 	Date();
 	Date(int day, int month, int year);
 	void inf();
+	int getDay();
+	std::string getMonth();
+	int getYear();
 };
 

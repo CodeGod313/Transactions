@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <fstream>
 
 
 class NewsPaper : public Product 
@@ -25,5 +26,6 @@ public:
 	bool remColumn(int priority);
 	void inf() override;
 	void modify(std::shared_ptr<Product> newsPaper1);
+	void printToFile(std::ofstream &fout);
 };
 

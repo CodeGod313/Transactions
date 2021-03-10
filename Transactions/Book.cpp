@@ -94,3 +94,14 @@ void Book::modify(std::shared_ptr<Product> book)
 	this->id = ((Book *)book.get())->getId();
 	this->type = BOOK;
 }
+
+void Book::printToFile(std::ofstream & fout)
+{
+	fout << "Title: " << name << std::endl;
+	fout << "Author: " << author << std::endl;
+	fout << "Co-authors" << std::endl;
+	for (int i = 0; i < coAuthors.size(); i++)
+	{
+		fout << coAuthors[i] << std::endl;
+	}
+}

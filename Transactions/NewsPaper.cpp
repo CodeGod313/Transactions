@@ -83,3 +83,10 @@ void NewsPaper::modify(std::shared_ptr<Product> newsPaper1)
 	this->name = ((NewsPaper *)(newsPaper1.get()))->getId();
 	this->type = NEWSPAPER;
 }
+
+void NewsPaper::printToFile(std::ofstream & fout)
+{
+	fout << "Title: " << name << std::endl << "Number: " << number << std::endl << "Date: ";
+	fout << date.getDay() << " " << date.getMonth() << " " << date.getYear() << std::endl;
+	fout << std::endl;
+}

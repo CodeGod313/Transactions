@@ -49,8 +49,66 @@ void ChiefEditor::commitTransaction(std::vector<Transaction<Product>>& transacti
 	}
 }
 
-void ChiefEditor::publish(std::vector<std::shared_ptr<Product>> &products)
+void ChiefEditor::publish(std::vector<std::shared_ptr<Product>> &products, std::vector<std::shared_ptr<Employe>>& employes, std::vector<Transaction<Product>> &transactions)
 {
+	if (products.size() == 0)
+	{
+		std::cout << "No products" << std::endl;
+		system("pause");
+		return;
+	}
+	for (int i = 0; i < products.size(); i++)
+	{
+		std::cout << "Product #" << i + 1 << std::endl;
+		products[i]->inf();
+	}
+	int choice;
+	std::cout << "Select:";
+	while (!(std::cin >> choice) || choice < 1 || choice > products.size())
+	{
+		std::cout << "Wrong choice" << std::endl;
+		std::cin.clear();
+		rewind(stdin);
+	}
+	for (int i = 0; i < employes.size(); i++)
+	{
+		if (employes[i]->getCurrenProduct() == products[choice - 1])
+		{
+			std::cout << "Someone is working on this" << std::endl;
+			system("pause");
+			return;
+		}
+	}
+	for (int i = 0; i < transactions.size(); i++)
+	{
+		if (transactions[i].isUsed(products[choice - 1]))
+		{
+			std::cout << "Check transactions" << std::endl;
+			system("pause");
+			return;
+		}
+	}
+	std::ofstream fout("Publications.txt", std::ios_base::app);
+	if (!fout.is_open())
+	{
+		std::cout << "Error opening file" << std::endl;
+		system("pause");
+		return;
+	}
+	switch (products[choice - 1]->getType())
+	{
+	case 0://book
+		((Book *)products[choice - 1].get())->printToFile(fout);
+		break;
+	case 1: //newspaper
+		((NewsPaper *)products[choice - 1].get())->printToFile(fout);
+		break;
+	case 2: //magazine
+		((Magazine *)products[choice - 1].get())->printToFile(fout);
+		break;
+	}
+	fout.close();
+	products.erase(products.begin() + choice - 1, products.begin() + choice);
 }
 
 void ChiefEditor::employ(std::vector<std::shared_ptr<Employe>>& employes)

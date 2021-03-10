@@ -87,7 +87,7 @@ int main()
 					system("pause");
 					break;
 				case 4:
-					chief->publish(products);
+					chief->publish(products, employes, transactions);
 					system("pause");
 					break;
 				case 5:

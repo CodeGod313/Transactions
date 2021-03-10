@@ -4,6 +4,7 @@
 #include <memory>
 #include "Product.h"
 #include <iostream>
+#include <fstream>
 
 class Magazine : public Product
 {
@@ -20,5 +21,6 @@ public:
 	void inf() override;
 	std::vector<std::shared_ptr<Star>> getStars();
 	void modify(std::shared_ptr<Product> prod);
+	void printToFile(std::ofstream &fout);
 };
 

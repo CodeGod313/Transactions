@@ -4,6 +4,7 @@
 #include <vector>
 #include <fstream>
 #include <iostream>
+#include <fstream>
 
 class Book : public Product
 {
@@ -24,4 +25,5 @@ public:
 	std::vector<std::string> getCoauthors();
 	void inf() override;
 	void modify(std::shared_ptr<Product> book);
+	void printToFile(std::ofstream &fout);
 };

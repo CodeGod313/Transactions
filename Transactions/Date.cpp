@@ -62,3 +62,18 @@ void Date::inf()
 	}
 	else std::cout << month << " " << year << std::endl;
 }
+
+int Date::getDay()
+{
+	return day;
+}
+
+std::string Date::getMonth()
+{
+	return monthStr;
+}
+
+int Date::getYear()
+{
+	return year;
+}

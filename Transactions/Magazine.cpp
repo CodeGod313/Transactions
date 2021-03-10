@@ -71,3 +71,14 @@ void Magazine::modify(std::shared_ptr<Product> prod)
 	}
 	this->type = MAGAZINE;
 }
+
+void Magazine::printToFile(std::ofstream & fout)
+{
+	fout << "Title: " << name << std::endl;
+	for (int i = 0; i < stars.size(); i++)
+	{
+		fout << "Star #" << i + 1 << std::endl;
+		fout << stars[i]->getName()<< " " << stars[i]->getSurName() << " " <<   stars[i]->getMiddleName() << std::endl;
+		
+	}
+}

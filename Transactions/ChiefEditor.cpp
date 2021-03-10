@@ -49,7 +49,7 @@ void ChiefEditor::commitTransaction(std::vector<Transaction<Product>>& transacti
 	}
 }
 
-void ChiefEditor::publish()
+void ChiefEditor::publish(std::vector<std::shared_ptr<Product>> &products)
 {
 }
 

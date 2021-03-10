@@ -61,13 +61,13 @@ std::vector<std::shared_ptr<Star>> Magazine::getStars()
 
 void Magazine::modify(std::shared_ptr<Product> prod)
 {
-	std::shared_ptr<Magazine> other((Magazine *)prod.get());
-	this->number = other->getNumber();
-	this->id = other->getId();
-	this->stars.resize(other->getStars().size());
-	for (int i = 0; i < other->getStars().size(); i++)
+	//std::shared_ptr<Magazine> other((Magazine *)prod.get());
+	this->number = ((Magazine *)prod.get())->getNumber();
+	this->id = ((Magazine *)prod.get())->getId();
+	this->stars.resize(((Magazine *)prod.get())->getStars().size());
+	for (int i = 0; i < ((Magazine *)prod.get())->getStars().size(); i++)
 	{
-		this->stars[i] = other->getStars()[i];
+		this->stars[i] = ((Magazine *)prod.get())->getStars()[i];
 	}
 	this->type = MAGAZINE;
 }

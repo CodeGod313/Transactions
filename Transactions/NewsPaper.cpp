@@ -69,17 +69,17 @@ void NewsPaper::inf()
 	std::cout << std::endl;
 }
 
-void NewsPaper::modify(const std::shared_ptr<Product>& newsPaper1)
+void NewsPaper::modify(std::shared_ptr<Product> newsPaper1)
 {
-	std::shared_ptr<NewsPaper> other((NewsPaper *)(newsPaper1.get()));
-	this->date = other->getDate();
-	this->number = other->getNumber();
-	this->Columns.resize(other->getColumns().size());
-	for (int i = 0; i < other->getColumns().size(); i++)
+	//std::shared_ptr<NewsPaper> other((NewsPaper *)(newsPaper1.get()));
+	this->date = ((NewsPaper *)(newsPaper1.get()))->getDate();
+	this->number = ((NewsPaper *)(newsPaper1.get()))->getNumber();
+	this->Columns.resize(((NewsPaper *)(newsPaper1.get()))->getColumns().size());
+	for (int i = 0; i < ((NewsPaper *)(newsPaper1.get()))->getColumns().size(); i++)
 	{
-		this->Columns[i] = other->getColumns()[i];
+		this->Columns[i] = ((NewsPaper *)(newsPaper1.get()))->getColumns()[i];
 	}
-	this->id = other->getId();
-	this->name = other->getId();
+	this->id = ((NewsPaper *)(newsPaper1.get()))->getId();
+	this->name = ((NewsPaper *)(newsPaper1.get()))->getId();
 	this->type = NEWSPAPER;
 }

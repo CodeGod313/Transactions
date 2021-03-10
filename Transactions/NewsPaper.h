@@ -24,6 +24,6 @@ public:
 	std::vector<std::shared_ptr<Column>> getColumns();
 	bool remColumn(int priority);
 	void inf() override;
-	void modify(const std::shared_ptr<Product> &newsPaper1);
+	void modify(std::shared_ptr<Product> newsPaper1);
 };
 

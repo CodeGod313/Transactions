@@ -81,15 +81,16 @@ void Book::inf()
 
 void Book::modify(std::shared_ptr<Product> book)
 {
-	std::shared_ptr<Book> book1((Book *)book.get());
-	this->author = book1->getAuthor();
-	this->pages = book1->getPages();
-	this->coAuthors.resize(book1->getAuthorQ());
+
+	//std::shared_ptr<Book> book1((Book *)book.get());
+	this->author = ((Book *)book.get())->getAuthor();
+	this->pages = ((Book *)book.get())->getPages();
+	this->coAuthors.resize(((Book *)book.get())->getAuthorQ());
 	for (int i = 0; i < coAuthors.size(); i++)
 	{
-		this->coAuthors[i] = book1->getCoauthors()[i];
+		this->coAuthors[i] = ((Book *)book.get())->getCoauthors()[i];
 	}
-	this->name = book1->getName();
-	this->id = book1->getId();
+	this->name = ((Book *)book.get())->getName();
+	this->id = ((Book *)book.get())->getId();
 	this->type = BOOK;
 }

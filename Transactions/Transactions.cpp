@@ -53,7 +53,12 @@ int main()
 	do
 	{
 		menu();
-		cin >> choice;
+		while (!(cin >> choice))
+		{
+			std::cin.clear();
+			rewind(stdin);
+			cout << "Wrong value" << endl;
+		}
 		switch (choice)
 		{
 		case 1:
@@ -62,11 +67,11 @@ int main()
 			{
 				system("CLS");
 				chiefMenu();
-				rewind(stdin);
-				rewind(stdin);
-				rewind(stdout);
-				fflush(stdin);
-				cin >> choice;
+				while (!(cin >> choice)) {
+					cout << "Wrong value" << endl;
+					cin.clear();
+					rewind(stdin);
+				}
 				switch (choice)
 				{
 				case 1:
@@ -115,13 +120,21 @@ int main()
 				}
 				int emp;
 				cout << "Select:" << endl;
-				cin >> emp;
+				while (!(cin >> emp)) {
+					cout << "Wrong value" << endl;
+					cin.clear();
+					rewind(stdin);
+				}
 				if (emp<1 || emp >employes.size()) {
 					cout << "Employe not found" << endl;
 					continue;
 				}
 				employeMenu();
-				cin >> c;
+				while (!(cin >> c)) {
+					cout << "Wrong value" << endl;
+					cin.clear();
+					rewind(stdin);
+				}
 				switch (c)
 				{
 				case 1:
@@ -132,15 +145,22 @@ int main()
 					break;
 				case 3:
 				{
+					if (employes[emp - 1]->getCurrenProduct() == NULL) {
+						cout << "No selected project" << endl;
+						system("pause");
+						break;
+					}
+					bool err = false;
 					for (int i = 0; i < transactions.size(); i++)
 					{
-						if (transactions[i].isUsed(employes[emp - 1]->getCurrenProduct()))
+						if (err = transactions[i].isUsed(employes[emp - 1]->getCurrenProduct()))
 						{
 							cout << "Acces denied" << endl;
 							system("pause");
 							break;
 						}
 					}
+					if (err) break;
 					Transaction<Product> transaction(employes[emp - 1]->getCurrenProduct());
 					CreatorMod modificator(employes[emp - 1]->getCurrenProduct(), employes[emp - 1]->getRole());
 					std::shared_ptr<Product> modification(modificator.start());
@@ -171,3 +191,4 @@ int main()
 }
 
 //I LOVE YOU
+//I WANNA KISS YOU

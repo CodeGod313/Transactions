@@ -23,5 +23,5 @@ public:
 	int getAuthorQ();
 	std::vector<std::string> getCoauthors();
 	void inf() override;
-	void modify(const std::shared_ptr<Product> &book);
+	void modify(std::shared_ptr<Product> book);
 };

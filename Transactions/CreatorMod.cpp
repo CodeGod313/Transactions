@@ -17,7 +17,12 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 		do
 		{
 			std::cout << "1. Add co-author\n 2. Set new author\n 3. Set quantity of pages\n 4. Start transaction\n 5. Cancel" << std::endl;
-			std::cin >> choice;
+			while (!(std::cin >> choice))
+			{
+				std::cout << "Wrong value" << std::endl;
+				std::cin.clear();
+				rewind(stdin);
+			}
 			switch (choice)
 			{
 			case 1:
@@ -46,12 +51,12 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 			{
 				int quantity;
 				std::cout << "Enter quantity of pages" << std::endl;
-				std::cin >> quantity;
-				while (quantity < 1)
+				
+				while (!(std::cin >> quantity) || quantity < 0)
 				{
 					std::cout << "Enter dood quantity" << std::endl;
+					std::cin.clear();
 					rewind(stdin);
-					std::cin >> quantity;
 				}
 				book->setPages(quantity);
 				std::cout << "Seted" << std::endl;
@@ -85,19 +90,23 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 		do
 		{
 			std::cout << "1. Add a number\n 2. Add a column\n 3. Set new date\n 4. Start transaction\n 5. Cancel" << std::endl;
-			std::cin >> choice;
+			while (!(std::cin >> choice)) {
+				std::cout << "Wrong value" << std::endl;
+				std::cin.clear();
+				rewind(stdin);
+			}
 			switch (choice)
 			{
 			case 1:
 			{
 				int number;
 				std::cout << "Enter number" << std::endl;
-				std::cin >> number;
-				while (number < 0)
+				
+				while (!(std::cin >> number))
 				{
-					std::cout << "Enter dood number" << std::endl;
+					std::cout << "Enter good number" << std::endl;
+					std::cin.clear();
 					rewind(stdin);
-					std::cin >> number;
 				}
 				newsPaper->setNumber(number);
 				std::cout << "Added" << std::endl;
@@ -112,12 +121,12 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 				std::getline(std::cin, text);
 				int priority;
 				std::cout << "Enter the priority" << std::endl;
-				std::cin >> priority;
-				while (priority < 0)
+				
+				while (!(std::cin >> priority) || priority < 0)
 				{
 					std::cout << "Enter dood number" << std::endl;
+					std::cin.clear();
 					rewind(stdin);
-					std::cin >> priority;
 				}
 				std::shared_ptr<Column> c(new Column(text, priority));
 				newsPaper->addColumn(c);
@@ -133,6 +142,7 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 				while (day < 0 || day > 31 || month < 1 || month > 12 || year < 0 || year > 2020)
 				{
 					std::cout << "Wrong data" << std::endl;
+					std::cin.clear();
 					rewind(stdin);
 					std::cin >> day >> month >> year;
 				}
@@ -169,19 +179,23 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 		do
 		{
 			std::cout << "1. Add a number\n 2. Add a star\n 3. Start transaction\n 4. Cancel" << std::endl;
-			std::cin >> choice;
+			while (!(std::cin >> choice))
+			{
+				std::cout << "Wrong value" << std::endl;
+				std::cin.clear();
+				rewind(stdin);
+			}
 			switch (choice)
 			{
 			case 1:
 			{
 				int number;
 				std::cout << "Enter number" << std::endl;
-				std::cin >> number;
-				while (number < 0)
+				while (!(std::cin >> number) || number < 0)
 				{
-					std::cout << "Enter dood number" << std::endl;
+					std::cout << "Enter good number" << std::endl;
+					std::cin.clear();
 					rewind(stdin);
-					std::cin >> number;
 				}
 				magazine->setNumber(number);
 				std::cout << "Added" << std::endl;
@@ -195,12 +209,11 @@ std::shared_ptr<Product> CreatorMod::createAsLead(std::shared_ptr<Product> prod)
 				std::cout << "Enter name, surname and middle name" << std::endl;
 				std::cin >> name >> surName >> middleName;
 				std::cout << "Enter domain:\n 1 - Music\n 2 - Cinema\n 3 - Art\n 4 - Fashion" << std::endl;
-				std::cin >> domain;
-				while (domain<1 || domain > 4)
+				while (!(std::cin >> domain) || domain < 1 || domain > 4)
 				{
 					std::cout << "Wrong" << std::endl;
+					std::cin.clear();
 					rewind(stdin);
-					std::cin >> domain;
 				}
 				std::shared_ptr<Star> star(new Star(name, surName, middleName, domain));
 				magazine->addStar(star);
@@ -244,7 +257,12 @@ std::shared_ptr<Product> CreatorMod::createAsCorr(std::shared_ptr<Product> prod)
 		do
 		{
 			std::cout << "1. Remove coauthor\n 2. Correct the quantity of pages\n  3. Start transaction\n 5. Cancel" << std::endl;
-			std::cin >> choice;
+			while (!(std::cin >> choice))
+			{
+				std::cout << "Wrong value" << std::endl;
+				std::cin.clear();
+				rewind(stdin);
+			}
 			switch (choice)
 			{
 			case 1:
@@ -262,12 +280,12 @@ std::shared_ptr<Product> CreatorMod::createAsCorr(std::shared_ptr<Product> prod)
 			{
 				int quantity;
 				std::cout << "Enter quantity of pages" << std::endl;
-				std::cin >> quantity;
-				while (quantity < 0)
+				
+				while (!(std::cin >> quantity) || quantity < 0)
 				{
-					std::cout << "Enter dood number" << std::endl;
+					std::cout << "Enter good quantity" << std::endl;
+					std::cin.clear();
 					rewind(stdin);
-					std::cin >> quantity;
 				}
 				book->setPages(quantity);
 				std::cout << "Seted" << std::endl;
@@ -301,14 +319,25 @@ std::shared_ptr<Product> CreatorMod::createAsCorr(std::shared_ptr<Product> prod)
 		do
 		{
 			std::cout << "1. Correct number\n 2. Remove column\n 3. Correct date\n 4. Start transaction\n 5. Cancel" << std::endl;
-			std::cin >> choice;
+			while (!(std::cin >> choice))
+			{
+				std::cout << "Wrong value" << std::endl;
+				std::wcin.clear();
+				rewind(stdin);
+			}
+
 			switch (choice)
 			{
 			case 1:
 			{
 				int number;
 				std::cout << "Enter number" << std::endl;
-				std::cin >> number;
+				while (!(std::cin >> number) || number < 0)
+				{
+					std::cout << "Enter good number" << std::endl;
+					std::cin.clear();
+					rewind(stdin);
+				}
 				newsPaper->setNumber(number);
 				std::cout << "Added" << std::endl;
 				system("pause");
@@ -318,7 +347,12 @@ std::shared_ptr<Product> CreatorMod::createAsCorr(std::shared_ptr<Product> prod)
 			{
 				int priority;
 				std::cout << "Enter the priority of column, which you wanna remove" << std::endl;
-				std::cin >> priority;
+				while (!(std::cin >> priority) || priority < 0)
+				{
+					std::cout << "Enter dood number" << std::endl;
+					std::cin.clear();
+					rewind(stdin);
+				}
 				if (newsPaper->remColumn(priority)) {
 					std::cout << "Column not found" << std::endl;
 				}
@@ -331,6 +365,13 @@ std::shared_ptr<Product> CreatorMod::createAsCorr(std::shared_ptr<Product> prod)
 				int day, month, year;
 				std::cout << "Enter day, month and year" << std::endl;
 				std::cin >> day >> month >> year;
+				while (day < 0 || day > 31 || month < 1 || month > 12 || year < 0 || year > 2020)
+				{
+					std::cout << "Wrong data" << std::endl;
+					std::cin.clear();
+					rewind(stdin);
+					std::cin >> day >> month >> year;
+				}
 				Date date(day, month, year);
 				newsPaper->setDate(date);
 				system("pause");
@@ -364,19 +405,23 @@ std::shared_ptr<Product> CreatorMod::createAsCorr(std::shared_ptr<Product> prod)
 		do
 		{
 			std::cout << "1. Correct number\n 2. Remove star\n 3. Start transaction\n 4. Cancel" << std::endl;
-			std::cin >> choice;
+			while (!(std::cin >> choice))
+			{
+				std::cout << "Wrong value" << std::endl;
+				std::wcin.clear();
+				rewind(stdin);
+			}
 			switch (choice)
 			{
 			case 1:
 			{
 				int number;
 				std::cout << "Enter number" << std::endl;
-				std::cin >> number;
-				while (number < 0)
+				while (!(std::cin >> number) || number < 0)
 				{
-					std::cout << "Enter dood number" << std::endl;
+					std::cout << "Enter good number" << std::endl;
+					std::cin.clear();
 					rewind(stdin);
-					std::cin >> number;
 				}
 				magazine->setNumber(number);
 				std::cout << "Added" << std::endl;

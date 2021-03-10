@@ -79,7 +79,7 @@ void Book::inf()
 	}
 }
 
-void Book::modify(const std::shared_ptr<Product> &book)
+void Book::modify(std::shared_ptr<Product> book)
 {
 	std::shared_ptr<Book> book1((Book *)book.get());
 	this->author = book1->getAuthor();

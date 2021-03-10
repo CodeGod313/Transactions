@@ -59,7 +59,7 @@ std::vector<std::shared_ptr<Star>> Magazine::getStars()
 	return stars;
 }
 
-void Magazine::modify(const std::shared_ptr<Product> &prod)
+void Magazine::modify(std::shared_ptr<Product> prod)
 {
 	std::shared_ptr<Magazine> other((Magazine *)prod.get());
 	this->number = other->getNumber();

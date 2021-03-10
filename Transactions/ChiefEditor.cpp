@@ -20,21 +20,25 @@ void ChiefEditor::commitTransaction(std::vector<Transaction<Product>>& transacti
 	}
 	std::cout << "Select:" << std::endl;
 	int choice1;
-	do
+	while (!(std::cin >> choice1) || choice1 < 1 || choice1 > transactions.size())
 	{
-		std::cin >> choice1;
-	} while (choice1 < 1 || choice1 > transactions.size());
-	std::cin >> choice1;
+		std::cout << "Wrong" << std::endl;
+		std::cin.clear();
+		rewind(stdin);
+	}
 	std::cout << "1 - Commit\n 2 - Revoke\n";
 	int choice2;
-	do
+	while (!(std::cin >> choice2) || (choice2 != 1 && choice2 != 2))
 	{
-		std::cin >> choice2;
-	} while (choice2 != 1 || choice2 != 2);
+		std::cout << "Wrong " << std::endl;
+		std::cin.clear();
+		rewind(stdin);
+	}
 	switch (choice2)
 	{
 	case 1:
 		transactions[choice1 - 1].commit();
+		transactions.erase(transactions.begin() + choice1 - 1, transactions.begin() + choice1);
 		break;
 	case 2:
 		transactions[choice1 - 1].revoke();
@@ -53,7 +57,12 @@ void ChiefEditor::employ(std::vector<std::shared_ptr<Employe>>& employes)
 {
 	std::cout << "1 - Lead editor\n 2 - Corrector" << std::endl;
 	int choice;
-	std::cin >> choice;
+	while (!(std::cin >> choice))
+	{
+		std::cout << "Wrong value" << std::endl;
+		std::cin.clear();
+		rewind(stdin);
+	}
 	switch (choice)
 	{
 	case 1:
@@ -86,7 +95,12 @@ void ChiefEditor::createProduct(std::vector<std::shared_ptr<Product>>& products)
 {
 	int choice;
 	std::cout << "1 - Book" << std::endl << "2 - NewsPaper" << std::endl << "3 - Magazine" << std::endl;
-	std::cin >> choice;
+	while (!(std::cin >> choice))
+	{
+		std::cout << "Wrong value" << std::endl;
+		std::cin.clear();
+		rewind(stdin);
+	}
 	switch (choice)
 	{
 	case 1:
@@ -100,14 +114,14 @@ void ChiefEditor::createProduct(std::vector<std::shared_ptr<Product>>& products)
 		rewind(stdin);
 		std::getline(std::cin, author);
 		std::cout << "Enter the quantity of pages" << std::endl;
-		std::cin >> pages;
-		while (pages<0)
+		while (!(std::cin >> pages))
 		{
-			rewind(stdin);
 			std::cout << "Wrong value" << std::endl;
-			std::cin >> pages;
+			std::cin.clear();
+			rewind(stdin);
 		}
 		std::shared_ptr<Book> book(new Book(name, author, pages));
+
 		products.resize(products.size() + 1);
 		products[products.size() - 1] = book;
 		std::cout << "Added" << std::endl;
@@ -121,6 +135,7 @@ void ChiefEditor::createProduct(std::vector<std::shared_ptr<Product>>& products)
 		while (day < 0 || day > 31 || month < 1 || month > 12 || year < 0 || year > 2020)
 		{
 			std::cout << "Wrong data" << std::endl;
+			std::cin.clear();
 			rewind(stdin);
 			std::cin >> day >> month >> year;
 		}
@@ -152,12 +167,11 @@ void ChiefEditor::createProduct(std::vector<std::shared_ptr<Product>>& products)
 		rewind(stdin);
 		std::getline(std::cin, name);
 		std::cout << "Enter the number" << std::endl;
-		std::cin >> number;
-		while (number < 0)
+		while (!(std::cin >> number) || number < 0)
 		{
-			std::cout << "Enter dood number" << std::endl;
+			std::cout << "Enter good number" << std::endl;
+			std::cin.clear();
 			rewind(stdin);
-			std::cin >> number;
 		}
 		std::shared_ptr<Magazine> magazine(new Magazine(number, name));
 		products.resize(products.size() + 1);
